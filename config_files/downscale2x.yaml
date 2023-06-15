@@ -1,0 +1,7 @@
+{
+  initial_stage: "Downscale",
+  final_stage: "Downscale",
+  downscale_overwrite: "True",
+  downscale_scalefactor: 2,
+  system_report: "False",
+}

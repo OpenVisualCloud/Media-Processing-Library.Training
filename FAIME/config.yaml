@@ -1,0 +1,211 @@
+{
+  # This is the default configuration file for the VSRframework.
+  #
+  # The general format is:
+  # option: Value
+  #
+  # Make sure to include a trailing comma at the end of each option (except for the final option)
+  #
+  # String values (including Booleans) need to be quoted:
+  # (e.g.) multiprocess: "True",
+  #
+  # Use double backslashes for folder paths on Windows
+  # (e.g.)
+  # project_folder: "C:\\temp"
+  #
+  # Numeric values do not need to be quoted:
+  # (e.g.) scenedetect_max_accept_length: 150,
+  #
+
+  ####################################
+  # GENERAL options
+  ####################################
+  initial_stage: "Metrics",                  # Initial stage to start framework at. Possible values: Initial, Download, SceneDetect, Classify, Split, Crop, Downscale, Augment, Train, Test, Metrics, Log, Compare, Plot, Final.  Default: "initial"
+  final_stage: "Metrics",                    # Final stage to start framework at. Possible values: Initial, Download, SceneDetect, Classify, Split, Crop, Downscale,  Augment, Train, Test, Metrics, Log, Compare, Plot, Final.  Default: "final"
+  project_folder: "C:\\Project11",                        # Project folder. If blank, current folder will be used.  Default: ""
+  models_folder: "C:\\vsrmodels",                         # Models folder. If blank, project_folder/models will be used.  Default: ""
+  videos_folder: "",                         # Videos folder.  If blank, project_folder/videos will be used.  Default: ""
+  individual_scenes: "",                     # List of individual scenes to process- separate values with commas (e.g. "0, 4, 8").  Default ""
+  multiprocess: "False",                     # Use multiprocessing when executing stages (scenes will be processed in parallel).  Default "True"
+  max_num_processes: 40,                     # Maximum number of processes spawn when doing multiprocessing (only currently used in Test and Metrics stages).  Default 40
+  system_report: "True",                     # Ouptut a system report when script starts.  Default "True"
+
+  ####################################
+  # DATABASE options
+  ####################################
+  database_reset: "False",                   # Clear the database before running the pipeline.  All scenes will be removed. All folders (except HR and videos) will be deleted. Default: "False"
+  database_build: "False",                   # Build the database based on content in the project folder.  Default:  "False"
+  database_remove_scenes: "",                # List of individual scenes to remove in the database - separate values with commas (e.g. "0, 1, 4").  Default ""
+
+  ####################################
+  # DOWNLOAD options
+  ####################################
+  download_skip_stage: "False",              # Skip this stage.  Default: "False"
+  download_video_urls: "",                   # Video URLs to download (comma or space delimited').  Default ""
+  download_video_vimeos: "",                 # Vimeos ids to download (comma or space delimited').  Default ""
+  download_video_youtubes: "",               # YouTube ids (e.g. huVVKz8P3vU) to download (comma or space delimited').  Default ""
+  download_overwrite: "False",               # Should the download operation overwrite existing video files with same filename.  Default: "False"
+
+  ####################################
+  # SCENEDETECT options
+  ####################################
+  scenedetect_skip_stage: "False",           # Skip this stage.  Default: "False"
+  scenedetect_video_filters: "*.mp4,*.y4m",  # Comma delimited list of filters used for selecting video files in the videos folder.  Default: "*.mp4,*.y4m"
+  scenedetect_max_video_length: -1,          # Maximum video length to process (in frames) -1 = process entire video.  Used in histogram algorithm only.  Default: -1
+  scenedetect_algorithm: "histogram",        # Which algorithm to use for scene detection (histogram, content=PySceneDetect Content, threshold=PySceneDetect Threshold).  Default: "histogram"
+  scenedetect_threshold: 40,                 # Threshold value to detect scene change.  Equal to the delta of two frames''s hsv average value (e.g. 30).  Used with content and threshold algorithms.  Default: 40
+  scenedetect_downscale: 0,                  # The frame is downscaled by this factor before it is used for scene detection to shorten detection time.  If equal to 0, an optimal downscalefactor is used.  Default: 0
+  scenedetect_min_accept_length: 120,        # Minimum Scene Length (in frames) accepted after detection.  Default: 120
+  scenedetect_max_accept_length: 200,        # Maximum Scene Length (in frames) accepted after detection (-1 = no maximum).  Default: 200
+  scenedetect_histogram_block_size: 32,      # Histogram block size (in pixels).  Default: 32
+  scenedetect_histogram_num_bins: 256,       # Number of histogram bins to calculate.  Default: 256
+  scenedetect_histogram_neighbor_size: 7,    # Number of frames on each side of the frame to use as a neighborhood (e.g. 3 -> f-3, f-2, f-1, f, f+1, f+2, f+3)').  Default: 7
+  scenedetect_histogram_threshold: 1.0,      # Threshold for scene detection against previous frame.  Default: 1.0
+  scenedetect_histogram_nei_threshold: 0.65, # Threshold for scene detection against neighborhood of frames.  Default: 0.65
+  scenedetect_overwrite: "False",            # Should the scened detect stage overwrite existing scenes detected with same filename?  Default: "False"
+  scenedetect_max_scenes_per_video: 10,       # Maximum number of scenes to be detected from a single video (-1 = unlimited).  Default: -1
+  scenedetect_max_scenes: -1,                # Maximum number of scenes to be detected from all videos (-1 = unlimited).  Default: -1
+
+  ####################################
+  # CLASSIFY options
+  ####################################
+  classify_skip_stage: "True",              # Skip this stage.  Default: "False"
+
+  ####################################
+  # SPLIT options
+  ####################################
+  split_skip_stage: "False",                 # Skip this stage.  Default: "False"
+  split_overwrite: "False",                  # Should the split stage overrwrite existing scene folders? Default: "False"
+  split_downscalefactor: 1,                  # Used to downscale the split frames when creating the high resolution - should be an integer values (eg: 2,3,or 4).  Not to be confused with the downscale scale factor used to create the LR frames.  Default: 1
+  split_downscale_algorithm: 0,              # OpenCV Algorithm used to downscale: 0=bilinear, 1=nearest, 2=area, 3=bicubic, 4=Lanczos.  Default: 0
+
+  ####################################
+  # CROP options
+  ####################################
+  crop_skip_stage: "False",                  # Skip this stage.  Default: "False"
+  crop_overwrite: "True",                    # Should the crop stage overrwrite existing LR folders?  Default: "True"
+  crop_num_frames: -1,                       # Number of middle frames to crop the scene to. -1= use all frames.  Default: -1
+  crop_fraction: 1.0,                        # Center percentage of each frame to crop.  1.0 = use entire frame.  Default: 1.0
+  crop_divisible: 1,                         # Crop frame size to be divisible by a value (e.g. =2 width, height are divisible by 2).  Default: 1
+
+  ####################################
+  # DOWNSCALE options
+  ####################################
+  downscale_skip_stage: "False",             # Skip this stage.  Default: "False"
+  downscale_overwrite: "True",               # Should the downscale stage overrwrite existing LR folders?  Default: "True"
+  downscale_scalefactor: 4,                  # Used to downscale the high resolution (HR) ground truth original frames into the low resolution (LR) frames - should be an integer values (eg: 2,3,or 4)').  Default: 4
+  downscale_algorithm: 3,                    # OpenCV Algorithm used to downscale: 0=bilinear, 1=nearest, 2=area, 3=bicubic, 4=Lanczos', 5=Blur, 6=Random (will use random choice of 0-5).  Default: 0
+  downscale_format: "PNG",                   # File format for downscaled image files: PNG or JPEG.  Default: "PNG"
+  downscale_JPEG_quality: 95,                # JPEG quality for downscaled JPEG image files (0-100).  Use -1 for random quality.  Default: 95
+  downscale_random_per_scene: "False",       # Apply random settings (downscale algorithm and jpeg quality) per scene rather than per image.  Default: "False"
+  downscale_create_mkv: "False",             # Create an MKV (Matroska) video from the downscaled frames. This file will contain uncompressed frames.  Default: "False"
+
+  ####################################
+  # AUGMENT options
+  ####################################
+  augment_skip_stage: "False",               # Skip this stage.  Default: "False"
+  augment_seed: 0,                           # Seed for augmentation effects.  Default: 0
+  augment_random_effects: "",                # Comma delimited list of random effects to choose from (e.g. gaussian_low_std, burst_low_per).  Default: ""
+  augment_effect: "",                        # Augmentation effect:
+                                             #   salt_and_pepper
+                                             #   gaussian_low, gaussian_medium, gaussian_high
+                                             #   block_2, block_4, block_8, block_16, block_32, block_64
+                                             #   burst_low, burst_medium, burst_high
+                                             #   poisson_low, poisson_medium, poisson_high
+                                             #   laplace_low, laplace_medium, laplace_high
+                                             #   jpegcompression_low, jpegcompression_medium, jpegcompression_high
+                                             #   motionblur_low, motionblur_medium, motionblur_high
+                                             #   sharpen_low, sharpen_medium, sharpen_high
+                                             #   random
+                                             # Default: ""
+
+  ####################################
+  # TRAIN options
+  ####################################
+  train_skip_stage: "False",                  # Skip this stage.  Default: "True"
+  train_algorithm: "RAISR",                  # which SR algorithm: RAISR, Default: Raisr
+  train_raisr_scale: 2,                      # Raisr upscale factor.  Default: 2
+  train_raisr_patch_size: 11,                # Raisr patch size.  Default: 11
+  train_raisr_gradient_size: 9,              # Raisr gradient size.  Default: 9
+  train_raisr_angle_quantization: 24,        # Raisr angle quantization. Default: 24
+  train_raisr_strength_quantization: 3,      # Raisr strength quantization. Default: 3
+  train_raisr_coherence_quantization: 3,     # Raisr coherence quantization. Default: 3
+  train_raisr_input_folder: "C:\\temp\\test2017",              # Raisr input folder (if not set, use all HR images). Default: ""
+  train_raisr_filterpath: "filters",          #filters folder name ,will be create under project folder/train/Raisr 
+
+  ####################################
+  # TEST options
+  ####################################
+  test_skip_stage: "False",                   # Skip this stage.  Default: "False"
+  test_cpu_only: "False",                     # True: run testing on CPU only. False: run testing on GPU only if CUDA is detected.  Default: "False"
+  test_clear_tests: "False",                  # Remove all test results for all the scenes, prior to running any new tests.  Default: "False"
+  test_algorithm: "bicubic",                         # which SR algorithm: RAISR,nearest_neighbor, bilinear, bicubic, area, or lanczos. If blank, no test will be run.  Default: ""
+  test_difference_style: "None",              # Style of difference file NONE=none RGB=Color JET=Blue-Red RAINBOW=Red-Green_purple HOT=Black-Red-Yellow  For more refer to: https://docs.opencv.org/4.5.2/d3/d50/group__imgproc__colormap.html.  Default: NONE
+  test_difference_multiplier: 15,             # Difference multiplier - scales differences to make them more visible in difference image. Default: 1.0
+  test_overwrite: "True",                    # Should the test stage overrwrite existing folders?  Default: "False"
+  test_RaisrFF_passes: "1",
+  test_RaisrFF_mode: "1",
+  test_RaisrFF_bits: "8",
+  test_RaisrFF_range: "video",
+  test_RaisrFF_threadcount: "120",
+  test_RaisrFF_blending: "1",
+  test_upscale_factor: 0,                     # Scale factor to use when testing-inferring  (e.g. 0, 2 or 4),Currently RAISR hardcoded to 2x.  If 0, calculate scalefactor from HR and LR frame size.  Default 4
+  test_name: "",                              # Name of the test run.  If blank, the test algorithm will be used for the name.  Used as the folder name for the SR test results.  Default: ""
+  test_tile: "False",                         # Break the LR frames into a series of tiles, run the test on the tiles, and then stitch back the results.  Default: False
+  test_tile_division: 4,                      # How to divide the LR frames for tiling (applied to both width and height, e.g. 4=16 tiles).").  Default: 4
+  test_tile_overlap: 5,                       # How many pixels to overlap the tiles.  Default: 5
+  test_video_create: "False",                  # Create video of test frames (mp4 format). Default: False
+  test_video_quality: 9,                      # Quality of created video (0-9).  Default: 5
+
+  ####################################
+  # METRICS options
+  ####################################
+  metrics_skip_stage: "False",                # Skip this stage.  Default: "False"
+  metrics_overwrite: "True",                  # Should the metrics stage overwrite existing results?  Default: "True"
+  metrics_psnr: "False",                       # Calculate PSNR metrics.  Default "True"
+  metrics_ssim: "False",                      # Calculate SSIM metrics  Default: "False"
+  metrics_msssim: "False",                    # Calculate MSSSIM metrics.  Default: "False"
+  metrics_vmaf: "False",                      # Calculate VMAF metrics.  Default: "False"
+  metrics_vmaf_preload: "True",               # Preload VMAF library on linux when calculating VMAF metrics.  Default: "True"
+  metrics_vmaf_delete_yuvs: "False",          # Delete the composite scene yuv files after calculating vmaf metric.  Default: "False"
+  metrics_single_frame: "False",              # Calculate VMAF for each frame independently, rather than as a sequence.  Default: "False"
+  metrics_gmaf: "False",                      # Calculate GMAF metrics.  Default: "False"
+  metrics_gmaf_delete_yuvs: "False",          # Delete the composite scene yuv files after calculating gmaf metric'.  Default: "False"
+  metrics_lpips: "True",                     # Calculate LPIPS metrics.  Default: False"
+  metrics_haarpsi: "False",                   # Calculate Haarspi metrics.  Default: "False"
+  metrics_test_name: "",                      # Name of the test to collect metrics on.  If blank, metrics for all tests run will be calculated.  Default: ""
+  metrics_border_crop: "True",                # Perform a border crop before calculating metrics.  Cropped area is a 32x32 multiple and centered in the original frame.
+
+  ####################################
+  # LOG options
+  ####################################
+  log_skip_stage: "False",                    # Skip this stage.  Default: "False"
+  log_logfilename: "log.csv",                 # Name for the log file (saved to csv format).  Default: "log.csv"
+  log_overwrite: "True",                     # Overwrite an existing log file if found, otherwise append').  Default: "True"
+  log_test_name: "",                          # Name of the test to log.  If blank, all tests will be logged.  Default: ""
+
+  ####################################
+  # COMPARE options
+  ####################################
+  compare_skip_stage: "False",                # Skip this stage.  Default: "False"
+  compare_overwrite: "False",                 # Should the compare stage overwrite existing results?  Default: "False"
+  compare_visualqualitytool: "none",          # Visual Quality Tool configuration creation: absolute (use absolute paths), relative (use relative paths), none (do not create) Default: "None"
+  compare_original:  "True",                  # Include original (HR) in comparision.  Default: "True"
+  compare_nearest_neighbor: "False",          # Include nearest neighbor scaling in comparision.  Default: "False"
+  compare_bilinear: "False",                  # Include bilinear scaling in comparision.  Default: "False"
+  compare_area: "False",                      # Include area scaling in comparision.  Default: "False"
+  compare_bicubic: "False",                   # Include bicubic scaling in comparision.  Default: "False"
+  compare_lanczos: "False",                   # Include Lanczos scaling in comparision.  Default: "False"
+  compare_tests: "True",                      # Include tests in comparision. Default: "True"
+  compare_descriptions: "True",               # Include descriptions in comparision sheet. Default: "True"
+  compare_numcolumns: -1,                     # Number of columns for the grids used in the comparision sheet and page.  -1 = single row.  Default: -1
+  compare_roifilename: "compare_regions.txt", # ROR filename - csv formatted file.  Each line contains scenename,frame,X,Y,width,height (e.g. "calendar, 4, 20, 80, 200, 200\").  Leave blank for no ROI generation.  Use misc/compare_regions.txt as example file. Default: ""
+
+  ####################################
+  # PLOT options
+  ####################################
+  plot_skip_stage: "False",                  # Skip this stage.  Default: "False"
+  plot_test_name: "",                        # Name of the test to plot.  If blank, all tests will be plotted
+  plot_metrics: "psnr_yuv,ssim_yuv,vmaf"     # Which metrics to plot.  Choose from:  psnr_yuv, psnr_y, psnr_u, psnr_v, ssim_yuv,ssim_y,ssim_u,ssim_v, msssim, vmaf, vmaf_adm2, vmaf_adm_scale0, vmaf_adm_scale1,lpips,haarpsi,gmaf  Default: "psnr_yuv,ssim_yuv,vmaf"
+
+}

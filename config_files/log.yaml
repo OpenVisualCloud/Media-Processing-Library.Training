@@ -1,0 +1,8 @@
+{
+  initial_stage: "Log",
+  final_stage: "Log",
+  log_overwrite: "True",                      # Overwrite an existing log file if found, otherwise append').  Default: "True"
+  log_skip_stage: "False",                    # Skip this stage.  Default: "False"
+  log_logfilename: "log.csv",                 # Name for the log file (saved to csv format).  Default: "log.csv"
+  log_test_name: ""                           # Name of the test to log.  If blank, all tests will be logged.  Default: ""
+}

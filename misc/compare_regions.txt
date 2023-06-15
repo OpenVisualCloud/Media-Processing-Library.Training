@@ -1,0 +1,19 @@
+# Copyright (C) 2023 Intel Corporation
+# SPDX-License-Identifier: BSD-3-Clause
+
+# Compare Regions template file
+#
+# Compare sheet will only show the first specified frame
+# Compare page will show animations from the specified start frame to the specified end frame.
+#
+# Define region of interests for scenes by specifying:
+# folder (name of folder under HR)
+# startframe (starting frame index)
+# endframe (ending frame index. Alternatively use -1 for last frame)
+# X - region's left pixel coordinate in the HR image
+# Y - region's top pixel coordinate in the HR image
+# width - size of region's width in pixels
+# height - size of region's height in pixels
+folder,startframe,endframe,X,Y,width,height
+calendar, 0,10, 155,230,80,40
+face, 0,-1, 650,160,80,60

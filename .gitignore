@@ -1,0 +1,15 @@
+downloads
+training
+env
+.idea
+*.ckpt
+packages/TecoGAN/TecoGAN.egg-info
+packages/RaisrJaladi/RaisrJaladi.egg-info
+packages/KerasImageSuperResolution/KerasImageSuperResolution.egg-info
+packages/TecoGANPyTorch/TecoGANPyTorch.egg-info
+packages/mmedit/mmedit.egg-info
+packages/TTSR/TTSR.egg-info
+packages/RCANtf/RCANtf.egg-info
+packages/Haarpsi/haarpsi.egg-info
+vsrframework/_pycache_
+*.pyc

@@ -1,0 +1,21 @@
+{
+  initial_stage: "Metrics",
+  final_stage: "Metrics",
+  system_report: "False",
+  metrics_overwrite: "True",                  # Should the metrics stage overwrite existing results?  Default: "True"
+  metrics_psnr: "True",                       # Calculate PSNR metrics.  Default "True"
+  metrics_ssim: "True",                      # Calculate SSIM metrics  Default: "False"
+  metrics_msssim: "True",                    # Calculate MSSSIM metrics.  Default: "False"
+  metrics_vmaf: "True",                      # Calculate VMAF metrics.  Default: "False"
+  metrics_vmaf_preload: "True",               # Preload VMAF library on linux when calculating VMAF metrics.  Default: "True"
+  metrics_vmaf_delete_yuvs: "False",          # Delete the composite scene yuv files after calculating vmaf metric.  Default: "False"
+  metrics_single_frame: "False",              # Calculate VMAF for each frame independently, rather than as a sequence.  Default: "False"
+
+  metrics_gmaf: "True",                      # Calculate GMAF metrics.  Default: "False"
+
+  metrics_gmaf_delete_yuvs: "False",          # Delete the composite scene yuv files after calculating gmaf metric'.  Default: "False"
+  metrics_lpips: "True",                     # Calculate LPIPS metrics.  Default: False"
+  metrics_haarpsi: "True",                   # Calculate Haarspi metrics.  Default: "False"
+  metrics_test_name: "",                      # Name of the test to collect metrics on.  If blank, metrics for all tests run will be calculated.  Default: ""
+  metrics_border_crop: "True",                # Perform a border crop before calculating metrics.  Cropped area is a 32x32 multiple and centered in the original frame.
+}

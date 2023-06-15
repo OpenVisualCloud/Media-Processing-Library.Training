@@ -1,0 +1,20 @@
+# Modify bit depth value and project folder value for own needs
+{
+  initial_stage: "Train",
+  final_stage: "Train",
+  system_report: "False",
+  database_build: "True",
+  train_algorithm: "RAISR",
+  train_skip_stage: "False",
+  train_raisr_bit_depth: "10",
+  train_raisr_first_pass: "False",
+  train_raisr_second_pass: "True",
+  train_raisr_scale: 2,
+  train_raisr_patch_size: 11,
+  train_raisr_gradient_size: 11,
+  train_raisr_angle_quantization: 24,
+  train_raisr_strength_quantization: 3,
+  train_raisr_coherence_quantization: 3,
+  train_raisr_filterpath: "filters",
+  train_raisr_sharpen: 1.0
+}

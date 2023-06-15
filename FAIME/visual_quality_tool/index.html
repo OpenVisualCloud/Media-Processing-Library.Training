@@ -1,0 +1,224 @@
+<!-- Copyright (C) 2023 Intel Corporation
+SPDX-License-Identifier: BSD-3-Clause -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual Quality Tool</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="icons/icons.css">
+  </head>
+  <body id="body">
+    <div id="root-grid">
+        <div class="grid lg">
+          <div class="header" id="header-main"></div>
+          <div class="header" id="logo">
+            <label style="color: white;">VQT</label>
+          </div>
+          <label class="header" id="menu-button">
+            <input type="checkbox">
+            <span class="header-checkmark menu icon"></span>
+          </label>
+          <div class="dropdown big" id="main-menu">
+            <li id="config-selector">Choose config...
+              <input id="config-input" type="file" style="display: none;">
+            </li>
+            <li id="dark-mode">Dark theme</li>
+          </div>
+          <label class="header" id="seq-label">
+            <input type="checkbox">
+            <span class="header-checkmark"></span>
+          </label>
+          <label class="header" id="seq-button">
+            <input type="checkbox">
+            <span class="header-checkmark chevron-small-down icon"></span>
+          </label>
+          <div class="dropdown big" id="seq-menu"></div>
+          <label class="header model" id="model-1">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-1">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-2">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-2">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-3">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-3">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-4">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-4">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-5">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-5">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-6">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-6">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-7">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-7">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-8">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-8">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <label class="header model" id="model-9">
+            <input type="radio" name="radio">
+            <span class="model-checkmark">
+              <div class="model-name"></div>
+            </span>
+          </label>
+          <label class="eye" id="eye-9">
+            <input type="checkbox">
+            <span class="eye-checkmark eye icon solid"></span>
+          </label>
+          <div class="header help-circle icon" id="help-button"></div>
+          <div class="toolbar" id="toolbar-main"></div>
+          <div class="toolbar" id="video-mode">
+            <label class="switch">
+              <input type="checkbox" id="video-mode-switch">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <label class="toolbar" for="video-mode-switch" id="video-mode-label">
+            Video mode
+          </label>
+          <div class="toolbar expand icon" id="fullscreen-button" title="Fullscreen [i]"></div>
+          <div class="toolbar pause icon" id="pause-video-button" title="Pause video [o]"></div>
+          <div class="toolbar play icon" id="play-video-button" title="Play video [p]"></div>
+          <div class="toolbar" id="speed-menu" title="Playback speed">
+            <input id="speed-selector" type="number" min=0.1 max=2.0 value=1.0 step=0.1></input>
+          </div>
+          <div class="toolbar" id="frame-stats"></div>
+          <div class="toolbar chevron-double-left icon" id="first-frame-button" title="First frame [a]"></div>
+          <div class="toolbar chevron-left icon" id="prev-frame-button" title="Previous frame [q]"></div>
+          <div class="toolbar" id="frame-menu" title="Current frame">
+            <input id="frame-selector" type="number"></input>
+          </div>
+          <div class="toolbar chevron-right icon" id="next-frame-button" title="Next frame [e]"></div>
+          <div class="toolbar chevron-double-right icon" id="last-frame-button" title="Last frame [d]"></div>
+          <div class="toolbar" id="magnifier-zoom-menu" title="Magnifier zoom">
+            <input id="magnifier-zoom-selector" type="number" min=2.0 max=4.0 value=2.0 step=0.1></input>
+          </div>
+          <label class="toolbar" id="magnifier-orientation-button" title="Magnifier Orientation">
+            <input type="checkbox">
+            <span class="button-checkmark">Flip</span>
+          </label>
+          <label class="toolbar" id="heatmap-options" title="Heatmap density">
+            <input type="checkbox">
+            <span class="button-checkmark chevron-small-down icon"></span>
+          </label>
+          <label class="toolbar" id="heatmap-button" title="Toggle heatmap [x]">
+            <input type="checkbox">
+            <span class="button-checkmark hotspot icon"></span>
+          </label>
+          <div class="dropdown small" id="heatmap-menu">
+            <input type="range" min="100" max="200" value="100" id="heatmap-slider">
+          </div>
+          <label class="toolbar" id="diff-button" title="Toggle diff [z]">
+            <input type="checkbox">
+            <span class="button-checkmark minus-circle icon"></span>
+          </label>
+          <label class="toolbar" id="cycle-play-button" title="Cycle play [c]">
+            <input type="checkbox">
+            <span class="button-checkmark replay icon"></span>
+          </label>
+          <div class="toolbar zoom-reset icon" id="fit-frame-button" title="Fit frame [f]"></div>
+          <div class="toolbar" id="zoom-menu" title="Current zoom">
+            <input id="zoom-selector" type="number" min=0.5 max=4.0 value=1.0 step=0.1></input>
+          </div>
+          <div id="image-wrapper">
+            <div id="image-area"></div>
+          </div>
+          <div id="video-wrapper">
+            <div id="video-area">
+              <video id="video" loop></video>
+            </div>
+          </div>
+          <div id="magnifier-area">
+          </div>
+          <div id="show-chart-button" class="graph-chart icon" title="Show chart"></div>
+          <div id="hide-chart-button" class="graph-chart icon" title="Hide chart"></div>
+          <label class="metrics" id="metrics-label">
+            <input type="checkbox">
+            <span class="metrics-checkmark"></span>
+          </label>
+          <label class="metrics" id="metrics-button">
+            <input type="checkbox">
+            <span class="metrics-checkmark chevron-small-down icon"></span>
+          </label>
+          <div class="dropdown small" id="metrics-menu"></div>
+          <div id="metrics-graph">
+            <canvas id="metrics-overlay"></canvas>
+            <canvas id="metrics-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="display-grid">
+      <div class="grid lg overlay"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.0/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="cache.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  initial_stage: "Augment",                  # Initial stage to start framework at. Possible values: Initial, Download, SceneDetect, Classify, Split, Crop, Downscale, Augment, Train, Test, Metrics, Log, Compare, Plot, Final.  Default: "initial"
+  final_stage: "Augment",                    # Final stage to start framework at. Possible values: Initial, Download, SceneDetect, Classify, Split, Crop, Downscale,  Augment, Train, Test, Metrics, Log, Compare, Plot, Final.  Default: "final"
+  system_report: "True",                     # Ouptut a system report when script starts.  Default "True"
+  database_build: "True",                   # Build the database based on content in the project folder.  Default:  "False"
+  augment_seed: 0,                           # Seed for augmentation effects.  Default: 0
+  augment_random_effects: "gaussian_low,gaussian_medium,salt_and_pepper,poisson_low,laplace_low,jpegcompression_low",                # Comma delimited list of random effects to choose from (e.g. gaussian_low_std, burst_low_per).  Default: ""
+  augment_effect: "random",                        # Augmentation effect:
+                                             #   salt_and_pepper
+                                             #   gaussian_low, gaussian_medium, gaussian_high
+                                             #   block_2, block_4, block_8, block_16, block_32, block_64
+                                             #   burst_low, burst_medium, burst_high
+                                             #   poisson_low, poisson_medium, poisson_high
+                                             #   laplace_low, laplace_medium, laplace_high
+                                             #   jpegcompression_low, jpegcompression_medium, jpegcompression_high
+                                             #   motionblur_low, motionblur_medium, motionblur_high
+                                             #   sharpen_low, sharpen_medium, sharpen_high
+                                             #   random
+                                             # Default: ""
+  }

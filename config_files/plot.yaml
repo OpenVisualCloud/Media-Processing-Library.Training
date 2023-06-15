@@ -1,0 +1,8 @@
+{
+  initial_stage: "Plot",
+  final_stage: "Plot",
+  system_report: "False",
+  plot_skip_stage: "False",                  # Skip this stage.  Default: "False"
+  plot_test_name: "",                        # Name of the test to plot.  If blank, all tests will be plotted
+  plot_metrics: "psnr_yuv,ssim_yuv,vmaf"     # Which metrics to plot.  Choose from:  psnr_yuv, psnr_y, psnr_u, psnr_v, ssim_yuv,ssim_y,ssim_u,ssim_v, msssim, vmaf, vmaf_adm2, vmaf_adm_scale0, vmaf_adm_scale1,lpips,haarpsi,gmaf  Default: "psnr_yuv,ssim_yuv,vmaf"
+}

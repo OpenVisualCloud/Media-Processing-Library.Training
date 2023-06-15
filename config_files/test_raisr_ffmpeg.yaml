@@ -1,0 +1,15 @@
+{
+  initial_stage: "Test",
+  final_stage: "Test",
+  system_report: "False",
+  test_algorithm: "RAISR_ffmpeg",
+  test_upscale_factor: 0,
+  test_overwrite: "True",
+  test_video_create: "True",
+  test_RaisrFF_passes: "1",
+  test_RaisrFF_mode: "1",
+  test_RaisrFF_bits: "8",
+  test_RaisrFF_range: "full",
+  test_RaisrFF_threadcount: "120",
+  test_RaisrFF_blending: "2"
+}

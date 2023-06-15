@@ -1,0 +1,3 @@
+[submodule "haarpsi"]
+	path = haarpsi
+	url = https://github.com/rgcda/haarpsi.git

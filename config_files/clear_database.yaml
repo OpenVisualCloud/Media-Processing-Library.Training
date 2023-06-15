@@ -1,0 +1,6 @@
+{
+  initial_stage: "Initial",
+  final_stage: "Initial",
+  database_reset: "True",
+  database_build: "True"
+}

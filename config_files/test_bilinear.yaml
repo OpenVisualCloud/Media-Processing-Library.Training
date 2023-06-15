@@ -1,0 +1,9 @@
+{
+  initial_stage: "Test",
+  final_stage: "Test",
+  test_algorithm: "bilinear",
+  test_upscale_factor: 0,
+  test_overwrite: "True",
+  test_video_create: "True",
+  system_report: "False",
+}

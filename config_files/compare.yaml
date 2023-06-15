@@ -1,0 +1,7 @@
+{
+  initial_stage: "Compare",
+  final_stage: "Compare",
+  compare_overwrite: "False",  
+  compare_visualqualitytool: "relative",
+  system_report: "False",
+}

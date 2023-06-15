@@ -1,0 +1,12 @@
+{
+  initial_stage: "Train",
+  final_stage: "Train",
+  train_algorithm: "RAISR",
+  train_skip_stage: "False",
+  train_raisr_scale: 2,
+  train_raisr_patch_size: 11,
+  train_raisr_gradient_size: 9,
+  train_raisr_angle_quantization: 24,
+  train_raisr_strength_quantization: 3,
+  train_raisr_coherence_quantization: 3,
+}
